@@ -8,7 +8,7 @@ export default function Home() {
     <main className="mt-[30vh] flex flex-col gap-5">
       <Input type="text" placeholder="Enter your name" />
       <Button disabled>Submit</Button>
-      <Checkbox>Remember me</Checkbox>
+      <Checkbox id="terms">Accept Terms and Conditions</Checkbox>
     </main>
   );
 }
