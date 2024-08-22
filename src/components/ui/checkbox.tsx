@@ -1,9 +1,6 @@
-"use client";
-
 import * as React from "react";
 import * as CheckboxPrimitive from "@radix-ui/react-checkbox";
 import { Check } from "lucide-react";
-
 import { cn } from "@/lib/utils";
 
 const Checkbox = React.forwardRef<
@@ -25,7 +22,12 @@ const Checkbox = React.forwardRef<
         <Check className="h-[18px] w-[18px] text-white" />
       </CheckboxPrimitive.Indicator>
     </CheckboxPrimitive.Root>
-    <label className="text-sm text-neutral-300">{props.children}</label>
+    <label
+      htmlFor={props.id}
+      className="text-sm text-neutral-300 peer-data-[state=checked]:text-orange-500"
+    >
+      {props.children}
+    </label>
   </div>
 ));
 Checkbox.displayName = CheckboxPrimitive.Root.displayName;
