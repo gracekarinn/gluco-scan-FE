@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <main className="mt-[30vh] flex flex-col gap-5">
       <Input type="text" placeholder="Enter your name" />
-      <Button disabled>Submit</Button>
+      <Button variant="secondary">Submit</Button>
       <Checkbox id="terms">Accept Terms and Conditions</Checkbox>
     </main>
   );
