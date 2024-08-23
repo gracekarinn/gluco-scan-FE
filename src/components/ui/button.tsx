@@ -12,7 +12,7 @@ const buttonVariants = cva(
         primary:
           "bg-orange-500 text-orange-50 hover:bg-orange-400 hover:text-orange-50 disabled:bg-neutral-50 disabled:text-neutral-100 active:text-orange-50 active:bg-orange-700 focus:bg-orange-500 focus:text-orange-50 focus:border-orange-300",
         secondary:
-          "bg-orange-50 text-orange-500 hover:bg-orange-50 hover:text-orange-500 active:bg-orange-300 active:text-orange-50 disabled:bg-neutral-50 disabled:text-neutral-100 disabled:cursor-not-allowed",
+          "bg-orange-50 text-orange-500 border-orange-400 border-[1px] hover:bg-orange-50 hover:text-orange-500 active:bg-orange-300 active:text-orange-50 disabled:bg-neutral-50 disabled:text-neutral-100 disabled:cursor-not-allowed",
         tertiary:
           "text-orange-500 hover:bg-orange-50 hover:text-orange-500 disabled:bg-neutral-50 disabled:text-neutral-100 active:bg-orange-100 active:text-orange-700 focus:bg-neutral-50 focus:text-blue-500 focus:border-blue-300 focus:border-[2px]",
         ghost:
