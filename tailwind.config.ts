@@ -115,6 +115,8 @@ const config = {
         "green-Dark-hover": "#278A4D",
         "green-Dark-active": "#1D673A",
         "green-Darker": "#17512D",
+
+        "grey-900": "#303030",
       },
       keyframes: {
         "accordion-down": {
