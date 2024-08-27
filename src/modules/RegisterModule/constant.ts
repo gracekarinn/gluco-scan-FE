@@ -1,8 +1,8 @@
 import { z } from "zod";
 
 export enum riwayatDiabetes {
-  YES,
-  NO,
+  YES = "YES",
+  NO = "NO",
 }
 
 export const registerSchema = z.object({
@@ -14,11 +14,11 @@ export const registerSchema = z.object({
 
 export const tanggalLahirSchema = z.object({
   tanggal_lahir: z.date(),
-})
+});
 
 export const jenisKelaminSchema = z.object({
   jenis_kelamin: z.string(),
-})
+});
 
 export const beratBadanSchema = z.object({
   berat_badan: z.string().refine(
@@ -28,7 +28,7 @@ export const beratBadanSchema = z.object({
     },
     { message: "Invalid number" }
   ),
-})
+});
 
 export const tinggiBadanSchema = z.object({
   tinggi_badan: z.string().refine(
@@ -38,15 +38,15 @@ export const tinggiBadanSchema = z.object({
     },
     { message: "Invalid number" }
   ),
-})
+});
 
 export const riwayatDiabetesSchema = z.object({
   riwayat_diabetes: z.nativeEnum(riwayatDiabetes),
-})
+});
 
 export const riwayatPenyakitSchema = z.object({
   riwayat_penyakit: z.string().optional(),
-})
+});
 
 export type submitRegisterData = z.infer<typeof registerSchema>;
 export type submitTanggalLahirData = z.infer<typeof tanggalLahirSchema>;
