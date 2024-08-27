@@ -67,7 +67,7 @@ export const RegisterForm = () => {
   return (
     <section>
       <AuthNavbar onBack={onBack} />
-      {page === 0 && <RiwayatLain onSubmit={onSubmitRiwayatLain} />}
+      {page === 0 && <JenisKelamin onSubmit={onSubmitJenisKelamin} />}
       {page === 1 && <div>{JSON.stringify(data)}</div>}
       {page === 2 && <JenisKelamin onSubmit={onSubmitJenisKelamin} />}
       {page === 3 && <div>{JSON.stringify(data)}</div>}

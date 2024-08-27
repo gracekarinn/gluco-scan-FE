@@ -24,6 +24,15 @@ export const JenisKelamin = ({
         onSubmit={form.handleSubmit(onSubmit)}
         className="flex flex-col items-center my-8"
       >
+        <div className="relative w-full h-[12px]">
+          <Image
+            alt="1"
+            src={"/stepper/2.png"}
+            fill
+            sizes="none"
+            className="object-contain"
+          />
+        </div>
         <div className="flex flex-col gap-y-3">
           <h1 className="text-[24px] text-center font-bold">
             Pilih jenis kelamin
