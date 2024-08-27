@@ -22,6 +22,7 @@ interface InputFormProps<
   name: Path<T>;
   form: UseFormReturn<T, U, V>;
   icon?: React.ReactNode;
+  type?: string;
 }
 
 const InputForm = <
@@ -36,6 +37,7 @@ const InputForm = <
   name,
   form,
   icon,
+  type = "text",
 }: InputFormProps<T, U, V>) => {
   return (
     <FormField
@@ -50,6 +52,7 @@ const InputForm = <
                 icon={icon}
                 label={label}
                 placeholder={placeholder}
+                type={type}
                 {...field}
               />
             </FormControl>
