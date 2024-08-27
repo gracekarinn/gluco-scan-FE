@@ -37,6 +37,7 @@ export const LoginForm = () => {
             icon={<Lock />}
             placeholder="Password"
             name="password"
+            type="password"
             form={form}
           />
           <h2 className="text-end font-medium text-sm text-neutral-200">
