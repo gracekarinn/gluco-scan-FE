@@ -60,6 +60,12 @@ export const RegisterForm = () => {
     setPage(page + 1);
   };
 
+  const onSubmitRiwayatDiabetes = async (data: submitRiwayatDiabetesData) => {
+    console.log(data);
+    setData(data);
+    setPage(page + 1);
+  };
+
   const onBack = () => {
     page > 0 ? setPage(page - 1) : route.back;
   };
