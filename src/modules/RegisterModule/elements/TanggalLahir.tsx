@@ -1,0 +1,102 @@
+"use client";
+
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { Button } from "@/components/ui/button";
+import {
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+} from "@/components/ui/form";
+import InputForm from "@/components/ui/inputform";
+import React from "react";
+import { tanggalLahirSchema, submitTanggalLahirData } from "../constant";
+import { User, Lock, AtSign, Mail, CalendarIcon } from "lucide-react";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Calendar } from "@/components/ui/calendar";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { cn } from "@/lib/utils";
+import { format } from "date-fns";
+import {
+    Dialog,
+    DialogContent,
+    DialogTrigger,
+  } from "@/components/ui/dialog"
+
+export const TanggalLahir = ({
+  onSubmit,
+}: {
+  onSubmit: (data: submitTanggalLahirData) => void;
+}) => {
+  const form = useForm<submitTanggalLahirData>({
+    resolver: zodResolver(tanggalLahirSchema),
+  });
+  return (
+    <Form {...form}>
+      <form
+        onSubmit={form.handleSubmit(onSubmit)}
+        className="flex flex-col gap-9 justify-center items-center"
+      >
+        <div className="mx-9">
+          <h1 className="text-center font-bold text-grey-900 text-H3">
+            Kapan kamu lahir?
+          </h1>
+          <p className="text-P6 tracking-wide font-normal text-center text-grey-900 mt-4">
+            Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem
+            Ipsum Lorem Ipsum Lorem Ipsum
+          </p>
+        </div>
+        <FormField
+          control={form.control}
+          name="tanggal_lahir"
+          render={({ field }) => {
+            return (
+              <FormItem>
+                <FormControl>
+                  <Dialog>
+                    <DialogTrigger asChild>
+                      <FormControl>
+                        <Button
+                          variant="tertiary"
+                          className={cn(
+                            "w-[240px] pl-3 text-left font-normal",
+                            !field.value && "text-muted-foreground",
+                            "flex items-center gap-2"
+                          )}
+                        >
+                          <CalendarIcon className="h-4 w-4 opacity-50" />
+                          {field?.value ? (
+                            <span>{format(field?.value, "PPP")}</span>
+                          ) : (
+                            <span>Pilih tanggal</span>
+                          )}
+                        </Button>
+                      </FormControl>
+                    </DialogTrigger>
+                    <DialogContent hideClose className="bg-transparent w-fit border-0">
+                      <Calendar
+                        captionLayout="dropdown-buttons"
+                        mode="single"
+                        fromYear={1990}
+                        toYear={2024}
+                        selected={field.value}
+                        onSelect={field.onChange}
+                        disabled={(date) =>
+                          date >= new Date() || date < new Date("1900-01-01")
+                        }
+                        initialFocus
+                      />
+                    </DialogContent>
+                  </Dialog>
+                </FormControl>
+                <FormDescription />
+              </FormItem>
+            );
+          }}
+        />
+      </form>
+    </Form>
+  );
+};
