@@ -10,19 +10,18 @@ import {
   FormItem,
   FormMessage,
 } from "@/components/ui/form";
-import InputForm from "@/components/ui/inputform";
-import React, { useState } from "react";
-import { beratBadanSchema, submitBeratBadanData } from "../constant";
-import { User, Lock, AtSign, Mail } from "lucide-react";
+import React from "react";
+import { riwayatPenyakitSchema, submitRiwayatPenyakitData } from "../constant";
 import Image from "next/image";
+import { Textarea } from "@/components/ui/textarea";
 
-export const BeratBadan = ({
+export const RiwayatLain = ({
   onSubmit,
 }: {
-  onSubmit: (data: submitBeratBadanData) => void;
+  onSubmit: (data: submitRiwayatPenyakitData) => void;
 }) => {
-  const form = useForm<submitBeratBadanData>({
-    resolver: zodResolver(beratBadanSchema),
+  const form = useForm<submitRiwayatPenyakitData>({
+    resolver: zodResolver(riwayatPenyakitSchema),
   });
 
   return (
@@ -31,11 +30,11 @@ export const BeratBadan = ({
         onSubmit={form.handleSubmit(onSubmit)}
         className="flex flex-col justify-between h-[90vh] my-8"
       >
-        <div className="gap-8 flex flex-col items-center">
+        <div className="gap-8 flex flex-col">
           <div className="relative w-full h-[12px]">
             <Image
               alt="1"
-              src={"/stepper/3.png"}
+              src={"/stepper/6.png"}
               fill
               sizes="none"
               className="object-contain"
@@ -43,7 +42,7 @@ export const BeratBadan = ({
           </div>
           <div className="mx-9">
             <h1 className="text-center font-bold text-grey-900 text-H3">
-              Tulis Berat Badan
+              Tulis Riwayat Lainnya
             </h1>
             <p className="text-P6 tracking-wide font-normal text-center text-grey-900 mt-4">
               Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem
@@ -52,20 +51,16 @@ export const BeratBadan = ({
           </div>
           <FormField
             control={form.control}
-            name="berat_badan"
+            name="riwayat_penyakit"
             render={({ field }) => {
               return (
                 <FormItem>
                   <FormControl>
-                    <div className="flex flex-row relative w-[113px]">
-                      <input
-                        className="border-b bg-white-50 w-[113px] text-[60px] font-bold border-[#303030] focus-visible:ring-0 focus-visible:outline-none"
-                        {...field}
-                      />
-                      <span className="absolute right-0 top-0 bottom-2 flex items-end text-P2 font-medium">
-                        kg
-                      </span>
-                    </div>
+                    <Textarea
+                      {...field}
+                      placeholder="Tuliskan Riwayat yang Anda miliki........"
+                      className="resize-none w-full"
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>

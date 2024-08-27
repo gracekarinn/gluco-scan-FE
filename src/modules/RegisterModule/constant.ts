@@ -30,7 +30,7 @@ export const beratBadanSchema = z.object({
   ),
 })
 
-export const tinggiBadaSchema = z.object({
+export const tinggiBadanSchema = z.object({
   tinggi_badan: z.string().refine(
     (v) => {
       let n = Number(v);
@@ -52,6 +52,6 @@ export type submitRegisterData = z.infer<typeof registerSchema>;
 export type submitTanggalLahirData = z.infer<typeof tanggalLahirSchema>;
 export type submitJenisKelaminData = z.infer<typeof jenisKelaminSchema>;
 export type submitBeratBadanData = z.infer<typeof beratBadanSchema>;
-export type submitTinggiBadanData = z.infer<typeof tinggiBadaSchema>;
+export type submitTinggiBadanData = z.infer<typeof tinggiBadanSchema>;
 export type submitRiwayatDiabetesData = z.infer<typeof riwayatDiabetesSchema>;
 export type submitRiwayatPenyakitData = z.infer<typeof riwayatPenyakitSchema>;

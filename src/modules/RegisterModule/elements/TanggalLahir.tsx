@@ -6,9 +6,9 @@ import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
+  FormMessage,
 } from "@/components/ui/form";
 import React from "react";
 import { tanggalLahirSchema, submitTanggalLahirData } from "../constant";
@@ -31,7 +31,7 @@ export const TanggalLahir = ({
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="flex flex-col gap-9 justify-center items-center my-9"
+        className="flex flex-col gap-9 justify-center items-center my-8"
       >
         <div className="relative w-full h-[12px]">
           <Image
@@ -97,7 +97,7 @@ export const TanggalLahir = ({
                     </DialogContent>
                   </Dialog>
                 </FormControl>
-                <FormDescription />
+                <FormMessage />
               </FormItem>
             );
           }}

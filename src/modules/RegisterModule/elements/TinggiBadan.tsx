@@ -10,19 +10,17 @@ import {
   FormItem,
   FormMessage,
 } from "@/components/ui/form";
-import InputForm from "@/components/ui/inputform";
-import React, { useState } from "react";
-import { beratBadanSchema, submitBeratBadanData } from "../constant";
-import { User, Lock, AtSign, Mail } from "lucide-react";
+import React from "react";
+import { tinggiBadanSchema, submitTinggiBadanData } from "../constant";
 import Image from "next/image";
 
-export const BeratBadan = ({
+export const TinggiBadan = ({
   onSubmit,
 }: {
-  onSubmit: (data: submitBeratBadanData) => void;
+  onSubmit: (data: submitTinggiBadanData) => void;
 }) => {
-  const form = useForm<submitBeratBadanData>({
-    resolver: zodResolver(beratBadanSchema),
+  const form = useForm<submitTinggiBadanData>({
+    resolver: zodResolver(tinggiBadanSchema),
   });
 
   return (
@@ -35,7 +33,7 @@ export const BeratBadan = ({
           <div className="relative w-full h-[12px]">
             <Image
               alt="1"
-              src={"/stepper/3.png"}
+              src={"/stepper/4.png"}
               fill
               sizes="none"
               className="object-contain"
@@ -43,7 +41,7 @@ export const BeratBadan = ({
           </div>
           <div className="mx-9">
             <h1 className="text-center font-bold text-grey-900 text-H3">
-              Tulis Berat Badan
+              Tulis Tinggi Badan
             </h1>
             <p className="text-P6 tracking-wide font-normal text-center text-grey-900 mt-4">
               Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem
@@ -52,18 +50,18 @@ export const BeratBadan = ({
           </div>
           <FormField
             control={form.control}
-            name="berat_badan"
+            name="tinggi_badan"
             render={({ field }) => {
               return (
                 <FormItem>
                   <FormControl>
-                    <div className="flex flex-row relative w-[113px]">
+                    <div className="flex flex-row relative">
                       <input
-                        className="border-b bg-white-50 w-[113px] text-[60px] font-bold border-[#303030] focus-visible:ring-0 focus-visible:outline-none"
+                        className="border-b bg-white-50 w-[150px] text-[60px] font-bold border-[#303030] focus-visible:ring-0 focus-visible:outline-none"
                         {...field}
                       />
                       <span className="absolute right-0 top-0 bottom-2 flex items-end text-P2 font-medium">
-                        kg
+                        cm
                       </span>
                     </div>
                   </FormControl>
