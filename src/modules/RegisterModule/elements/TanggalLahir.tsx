@@ -10,20 +10,14 @@ import {
   FormField,
   FormItem,
 } from "@/components/ui/form";
-import InputForm from "@/components/ui/inputform";
 import React from "react";
 import { tanggalLahirSchema, submitTanggalLahirData } from "../constant";
-import { User, Lock, AtSign, Mail, CalendarIcon } from "lucide-react";
-import { Checkbox } from "@/components/ui/checkbox";
+import { CalendarIcon } from "lucide-react";
 import { Calendar } from "@/components/ui/calendar";
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { cn } from "@/lib/utils";
 import { format } from "date-fns";
-import {
-    Dialog,
-    DialogContent,
-    DialogTrigger,
-  } from "@/components/ui/dialog"
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import Image from "next/image";
 
 export const TanggalLahir = ({
   onSubmit,
@@ -37,8 +31,17 @@ export const TanggalLahir = ({
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="flex flex-col gap-9 justify-center items-center"
+        className="flex flex-col gap-9 justify-center items-center my-9"
       >
+        <div className="relative w-full h-[12px]">
+          <Image
+            alt="1"
+            src={"/stepper/1.png"}
+            fill
+            sizes="none"
+            className="object-contain"
+          />
+        </div>
         <div className="mx-9">
           <h1 className="text-center font-bold text-grey-900 text-H3">
             Kapan kamu lahir?
@@ -61,21 +64,24 @@ export const TanggalLahir = ({
                         <Button
                           variant="tertiary"
                           className={cn(
-                            "w-[240px] pl-3 text-left font-normal",
-                            !field.value && "text-muted-foreground",
+                            "w-[160px] pl-3 text-left font-normal",
+                            !field.value && "text-[#4D4D4D] text-P4 font-[300]",
                             "flex items-center gap-2"
                           )}
                         >
-                          <CalendarIcon className="h-4 w-4 opacity-50" />
+                          <CalendarIcon className="h-4 w-4 text-orange-500" />
                           {field?.value ? (
                             <span>{format(field?.value, "PPP")}</span>
                           ) : (
-                            <span>Pilih tanggal</span>
+                            <span>dd/mm/yyyy</span>
                           )}
                         </Button>
                       </FormControl>
                     </DialogTrigger>
-                    <DialogContent hideClose className="bg-transparent w-fit border-0">
+                    <DialogContent
+                      hideClose
+                      className="bg-transparent w-fit border-0"
+                    >
                       <Calendar
                         captionLayout="dropdown-buttons"
                         mode="single"

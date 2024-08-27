@@ -55,11 +55,10 @@ function Calendar({
           caption_label: 'text-lg font-bold font-urbanist dark:text-white',
           nav: 'space-x-1 flex items-center',
           nav_button: cn(
-            buttonVariants({ variant: 'ghost' }),
-            'flex items-center px-2 rounded-[8px] dark:border-[#FFFFFF33]'
+            'flex items-center px-2 rounded-[8px] '
           ),
-          nav_button_previous: 'absolute left-1',
-          nav_button_next: 'absolute left-11',
+          nav_button_previous: 'absolute left-1 text-[#93A3B3]/50',
+          nav_button_next: 'absolute left-11 text-[#93A3B3]',
           table: 'w-full flex flex-col gap-1 sm:gap-[9px]',
           head_row: 'flex sm:gap-2',
           head_cell:
@@ -69,7 +68,7 @@ function Calendar({
           day: 'h-9 w-9 p-0 font-normal rounded-full text-[#1A2223] dark:text-white',
           day_range_end: 'day-range-end',
           day_selected:
-            'bg-gradien-primary text-neutral-50 hover:bg-neutral-900 hover:text-neutral-50 focus:bg-neutral-900 focus:text-neutral-50 dark:bg-neutral-50 dark:text-neutral-900 dark:hover:bg-neutral-50 dark:hover:text-neutral-900 dark:focus:bg-neutral-50 dark:focus:text-neutral-900',
+            'bg-[#0978ce] text-neutral-50 hover:bg-neutral-900 hover:text-neutral-50 focus:bg-[#0978ce] focus:text-neutral-50 dark:bg-neutral-50 dark:text-neutral-900 dark:hover:bg-neutral-50 dark:hover:text-neutral-900 dark:focus:bg-neutral-50 dark:focus:text-neutral-900',
           day_today:
             'bg-[#1A22231A] text-[#1A2223] dark:bg-neutral-800 dark:text-neutral-50',
           day_outside:
