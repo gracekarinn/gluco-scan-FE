@@ -16,6 +16,7 @@ import { TinggiBadan } from "../elements/TinggiBadan";
 import { RiwayatLain } from "../elements/RiwayatLain";
 import { AuthNavbar } from "../elements/AuthNavbar";
 import { useRouter } from "next/navigation";
+import { JenisKelamin } from "../elements/JenisKelamin";
 
 export const RegisterForm = () => {
   const [page, setPage] = useState<number>(0);
@@ -30,6 +31,12 @@ export const RegisterForm = () => {
   };
 
   const onSubmitTanggalLahir = async (data: submitTanggalLahirData) => {
+    console.log(data);
+    setData(data);
+    setPage(page + 1);
+  };
+
+  const onSubmitJenisKelamin = async (data: submitJenisKelaminData) => {
     console.log(data);
     setData(data);
     setPage(page + 1);
@@ -62,6 +69,8 @@ export const RegisterForm = () => {
       <AuthNavbar onBack={onBack} />
       {page === 0 && <RiwayatLain onSubmit={onSubmitRiwayatLain} />}
       {page === 1 && <div>{JSON.stringify(data)}</div>}
+      {page === 2 && <JenisKelamin onSubmit={onSubmitJenisKelamin} />}
+      {page === 3 && <div>{JSON.stringify(data)}</div>}
     </section>
   );
 };
