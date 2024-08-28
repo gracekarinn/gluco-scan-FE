@@ -10,6 +10,7 @@ const MainNotLoginModule = () => {
       <MulaiSekarang />
       <CheckThisOut />
       <FiturKami />
+      <PaketLangganan />
     </div>
   );
 };
