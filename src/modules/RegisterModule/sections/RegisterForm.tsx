@@ -17,6 +17,8 @@ import { RiwayatLain } from "../elements/RiwayatLain";
 import { AuthNavbar } from "../elements/AuthNavbar";
 import { useRouter } from "next/navigation";
 import { JenisKelamin } from "../elements/JenisKelamin";
+import { RiwayatDiabetes } from "../elements/RiwayatDiabetes";
+import { toast } from "sonner";
 
 export const RegisterForm = () => {
   const [page, setPage] = useState<number>(0);
@@ -25,58 +27,57 @@ export const RegisterForm = () => {
   const route = useRouter();
 
   const onSubmitRegister = async (data: submitRegisterData) => {
-    console.log(data);
-    setData(data);
-    setPage(page + 1);
+    setData((prev) => ({ ...prev, ...data }));
+    setPage((prev) => prev + 1);
   };
 
   const onSubmitTanggalLahir = async (data: submitTanggalLahirData) => {
-    console.log(data);
-    setData(data);
-    setPage(page + 1);
+    setData((prev) => ({ ...prev, ...data }));
+    setPage((prev) => prev + 1);
   };
 
   const onSubmitJenisKelamin = async (data: submitJenisKelaminData) => {
-    console.log(data);
-    setData(data);
-    setPage(page + 1);
+    setData((prev) => ({ ...prev, ...data }));
+    setPage((prev) => prev + 1);
   };
 
   const onSubmitBeratBadan = async (data: submitBeratBadanData) => {
-    console.log(data);
-    setData(data);
-    setPage(page + 1);
+    setData((prev) => ({ ...prev, ...data }));
+    setPage((prev) => prev + 1);
   };
 
   const onSubmitTinggiBadan = async (data: submitTinggiBadanData) => {
-    console.log(data);
-    setData(data);
-    setPage(page + 1);
-  };
-
-  const onSubmitRiwayatLain = async (data: submitRiwayatPenyakitData) => {
-    console.log(data);
-    setData(data);
-    setPage(page + 1);
+    setData((prev) => ({ ...prev, ...data }));
+    setPage((prev) => prev + 1);
   };
 
   const onSubmitRiwayatDiabetes = async (data: submitRiwayatDiabetesData) => {
-    console.log(data);
-    setData(data);
-    setPage(page + 1);
+    setData((prev) => ({ ...prev, ...data }));
+    setPage((prev) => prev + 1);
+  };
+
+  const onSubmitRiwayatLain = async (data: submitRiwayatPenyakitData) => {
+    setData((prev) => ({ ...prev, ...data }));
+    setPage((prev) => prev + 1);
+    // logic regist disini
+    route.push("/login");
+    toast.success("Register Berhasil");
   };
 
   const onBack = () => {
-    page > 0 ? setPage(page - 1) : route.back;
+    page > 0 ? setPage(page - 1) : route.push("/welcome");
   };
 
   return (
     <section>
       <AuthNavbar onBack={onBack} />
-      {page === 0 && <JenisKelamin onSubmit={onSubmitJenisKelamin} />}
-      {page === 1 && <div>{JSON.stringify(data)}</div>}
+      {page === 0 && <EmailPass onSubmit={onSubmitRegister} />}
+      {page === 1 && <TanggalLahir onSubmit={onSubmitTanggalLahir} />}
       {page === 2 && <JenisKelamin onSubmit={onSubmitJenisKelamin} />}
-      {page === 3 && <div>{JSON.stringify(data)}</div>}
+      {page === 3 && <BeratBadan onSubmit={onSubmitBeratBadan} />}
+      {page === 4 && <TinggiBadan onSubmit={onSubmitTinggiBadan} />}
+      {page === 5 && <RiwayatDiabetes onSubmit={onSubmitRiwayatDiabetes} />}
+      {page === 6 && <RiwayatLain onSubmit={onSubmitRiwayatLain} />}
     </section>
   );
 };

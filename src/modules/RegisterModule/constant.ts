@@ -1,10 +1,5 @@
 import { z } from "zod";
 
-export enum riwayatDiabetes {
-  YES = "YES",
-  NO = "NO",
-}
-
 export const registerSchema = z.object({
   email: z.string().email(),
   password: z.string(),
@@ -41,7 +36,7 @@ export const tinggiBadanSchema = z.object({
 });
 
 export const riwayatDiabetesSchema = z.object({
-  riwayat_diabetes: z.nativeEnum(riwayatDiabetes),
+  riwayat_diabetes: z.boolean(),
 });
 
 export const riwayatPenyakitSchema = z.object({
