@@ -1,7 +1,12 @@
 import React from "react";
+import { PaketLangganan } from "./sections/PaketLangganan";
 
 const MainNotLoginModule = () => {
-  return <div>MainNotLoginModule</div>;
+  return (
+    <main>
+      <PaketLangganan />
+    </main>
+  );
 };
 
 export default MainNotLoginModule;
