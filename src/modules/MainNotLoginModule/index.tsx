@@ -1,4 +1,8 @@
 import React from "react";
+import MulaiSekarang from "./sections/MulaiSekarang";
+import CheckThisOut from "./sections/CheckThisOut";
+import FiturKami from "./sections/FiturKami";
+import { PaketLangganan } from "./sections/PaketLangganan";
 
 const MainNotLoginModule = () => {
   return (
