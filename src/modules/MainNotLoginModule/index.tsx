@@ -1,11 +1,12 @@
 import React from "react";
-import { PaketLangganan } from "./sections/PaketLangganan";
 
 const MainNotLoginModule = () => {
   return (
-    <main>
-      <PaketLangganan />
-    </main>
+    <div className="flex flex-col gap-y-20">
+      <MulaiSekarang />
+      <CheckThisOut />
+      <FiturKami />
+    </div>
   );
 };
 
