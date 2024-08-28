@@ -28,7 +28,7 @@ export const RiwayatLain = ({
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="flex flex-col justify-between h-[90vh] my-8"
+        className="flex flex-col justify-between h-[85vh] my-8"
       >
         <div className="gap-8 flex flex-col">
           <div className="relative w-full h-[12px]">

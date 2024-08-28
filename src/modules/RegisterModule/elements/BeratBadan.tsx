@@ -10,10 +10,8 @@ import {
   FormItem,
   FormMessage,
 } from "@/components/ui/form";
-import InputForm from "@/components/ui/inputform";
-import React, { useState } from "react";
+import React from "react";
 import { beratBadanSchema, submitBeratBadanData } from "../constant";
-import { User, Lock, AtSign, Mail } from "lucide-react";
 import Image from "next/image";
 
 export const BeratBadan = ({
@@ -29,7 +27,7 @@ export const BeratBadan = ({
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="flex flex-col justify-between h-[90vh] my-8"
+        className="flex flex-col justify-between h-[85vh] my-8"
       >
         <div className="gap-8 flex flex-col items-center">
           <div className="relative w-full h-[12px]">
@@ -59,8 +57,8 @@ export const BeratBadan = ({
                   <FormControl>
                     <div className="flex flex-row relative w-[113px]">
                       <input
-                        className="border-b bg-white-50 w-[113px] text-[60px] font-bold border-[#303030] focus-visible:ring-0 focus-visible:outline-none"
                         {...field}
+                        className="border-b bg-white-50 w-[113px] text-[60px] font-bold border-[#303030] focus-visible:ring-0 focus-visible:outline-none"
                       />
                       <span className="absolute right-0 top-0 bottom-2 flex items-end text-P2 font-medium">
                         kg
