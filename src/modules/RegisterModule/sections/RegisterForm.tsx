@@ -60,18 +60,20 @@ export const RegisterForm = () => {
     setData((prev) => ({ ...prev, ...formData }));
     setPage((prev) => prev + 1);
 
-    await fetch("/api/auth/register", {
+    await fetch("api/auth/register", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
     })
       .then((res) => {
-        console.log(res.json());
-        //route.push("/login");
+        if(res.status === 400) {
+          toast.error("Username Already Exist");
+          throw new Error("Username Already Exist");
+        }
+        route.push("/login");
         toast.success("Register Berhasil");
       })
       .catch((err) => {
-        console.log(err);
         toast.error("Register Gagal");
       });
   };
