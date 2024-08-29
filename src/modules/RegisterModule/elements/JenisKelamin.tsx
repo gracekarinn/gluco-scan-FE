@@ -49,7 +49,7 @@ export const JenisKelamin = ({
           <div className="w-full">
             <FormField
               control={form.control}
-              name="jenis_kelamin"
+              name="gender"
               render={({ field }) => {
                 return (
                   <FormItem>
