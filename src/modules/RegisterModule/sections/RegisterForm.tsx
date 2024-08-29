@@ -56,12 +56,24 @@ export const RegisterForm = () => {
     setPage((prev) => prev + 1);
   };
 
-  const onSubmitRiwayatLain = async (data: submitRiwayatPenyakitData) => {
-    setData((prev) => ({ ...prev, ...data }));
+  const onSubmitRiwayatLain = async (formData: submitRiwayatPenyakitData) => {
+    setData((prev) => ({ ...prev, ...formData }));
     setPage((prev) => prev + 1);
-    // logic regist disini
-    route.push("/login");
-    toast.success("Register Berhasil");
+
+    await fetch("/api/auth/register", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    })
+      .then((res) => {
+        console.log(res.json());
+        //route.push("/login");
+        toast.success("Register Berhasil");
+      })
+      .catch((err) => {
+        console.log(err);
+        toast.error("Register Gagal");
+      });
   };
 
   const onBack = () => {

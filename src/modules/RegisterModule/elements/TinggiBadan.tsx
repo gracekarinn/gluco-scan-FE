@@ -50,7 +50,7 @@ export const TinggiBadan = ({
           </div>
           <FormField
             control={form.control}
-            name="tinggi_badan"
+            name="height"
             render={({ field }) => {
               return (
                 <FormItem>

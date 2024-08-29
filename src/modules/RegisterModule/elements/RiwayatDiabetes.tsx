@@ -45,7 +45,7 @@ export const RiwayatDiabetes = ({
           <div className="w-full">
             <FormField
               control={form.control}
-              name="riwayat_diabetes"
+              name="riwayatDiabetes"
               render={({ field }) => {
                 return (
                   <FormItem>

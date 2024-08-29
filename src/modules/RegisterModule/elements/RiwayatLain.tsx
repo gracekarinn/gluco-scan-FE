@@ -51,7 +51,7 @@ export const RiwayatLain = ({
           </div>
           <FormField
             control={form.control}
-            name="riwayat_penyakit"
+            name="riwayatPenyakit"
             render={({ field }) => {
               return (
                 <FormItem>

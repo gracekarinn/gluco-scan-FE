@@ -54,7 +54,7 @@ export const TanggalLahir = ({
           </div>
           <FormField
             control={form.control}
-            name="tanggal_lahir"
+            name="tanggalLahir"
             render={({ field }) => {
               return (
                 <FormItem>
