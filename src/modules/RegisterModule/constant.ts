@@ -4,19 +4,19 @@ export const registerSchema = z.object({
   email: z.string().email(),
   password: z.string(),
   username: z.string(),
-  full_name: z.string(),
+  fullName: z.string(),
 });
 
 export const tanggalLahirSchema = z.object({
-  tanggal_lahir: z.date(),
+  tanggalLahir: z.date(),
 });
 
 export const jenisKelaminSchema = z.object({
-  jenis_kelamin: z.string(),
+  gender: z.string(),
 });
 
 export const beratBadanSchema = z.object({
-  berat_badan: z.string().refine(
+  weight: z.string().refine(
     (v) => {
       let n = Number(v);
       return !isNaN(n) && v?.length > 0;
@@ -26,7 +26,7 @@ export const beratBadanSchema = z.object({
 });
 
 export const tinggiBadanSchema = z.object({
-  tinggi_badan: z.string().refine(
+  height: z.string().refine(
     (v) => {
       let n = Number(v);
       return !isNaN(n) && v?.length > 0;
@@ -36,11 +36,11 @@ export const tinggiBadanSchema = z.object({
 });
 
 export const riwayatDiabetesSchema = z.object({
-  riwayat_diabetes: z.boolean(),
+  riwayatDiabetes: z.boolean(),
 });
 
 export const riwayatPenyakitSchema = z.object({
-  riwayat_penyakit: z.string().optional(),
+  riwayatPenyakit: z.string().optional(),
 });
 
 export type submitRegisterData = z.infer<typeof registerSchema>;
