@@ -34,7 +34,7 @@ export const EmailPass = ({
           <InputForm
             form={form}
             label="Nama Lengkap"
-            name="full_name"
+            name="fullName"
             placeholder="Ex : John Doe"
             icon={<User />}
           />
