@@ -9,14 +9,35 @@ import React from "react";
 import { loginSchema, submitLoginData } from "../constant";
 import { CircleUser, Lock } from "lucide-react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { toast } from "sonner";
 
 export const LoginForm = () => {
+  const route = useRouter();
   const form = useForm<submitLoginData>({
     resolver: zodResolver(loginSchema),
   });
 
   const onSubmit = async (data: submitLoginData) => {
-    console.log(data);
+    await fetch("/api/auth/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+      credentials: "include",
+    })
+      .then(async (res) => {
+        if (res.ok) {
+          toast.success("Login Success");
+          route.push("/main");
+        } else {
+          toast.error("Invalid Email or Password dm @batakwhore at X");
+        }
+      })
+      .catch((err) => {
+        toast.error(err.message);
+      });
   };
 
   return (
@@ -49,7 +70,12 @@ export const LoginForm = () => {
           <h3 className="pt-1 text-center font-normal text-P6 text-neutral-200">
             Don&apos;t have an account?
           </h3>
-          <Link href={"/register"} className="text-sm text-orange-500 text-center font-medium">Sign Up Here</Link>
+          <Link
+            href={"/register"}
+            className="text-sm text-orange-500 text-center font-medium"
+          >
+            Sign Up Here
+          </Link>
         </form>
       </Form>
     </section>
