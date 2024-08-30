@@ -67,8 +67,8 @@ export const RegisterForm = () => {
     })
       .then((res) => {
         if(res.status === 400) {
-          toast.error("Username Already Exist");
-          throw new Error("Username Already Exist");
+          toast.error("Email Already Exist");
+          throw new Error("Email Already Exist");
         }
         route.push("/login");
         toast.success("Register Berhasil");
