@@ -144,7 +144,7 @@ export const AsupanGula = () => {
                 form={form}
               />
               <div className="grid grid-cols-2 gap-1">
-                <Button variant={"secondary"}>Kembali</Button>
+                <Button variant={"secondary"} onClick={() => setOpen(false)}>Kembali</Button>
                 <Button type="submit" className="w-full">
                   Tetapkan
                 </Button>
