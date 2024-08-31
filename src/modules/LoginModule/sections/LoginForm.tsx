@@ -11,6 +11,7 @@ import { CircleUser, Lock } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
+import { setCookie } from "cookies-next";
 
 export const LoginForm = () => {
   const route = useRouter();
@@ -29,6 +30,9 @@ export const LoginForm = () => {
     })
       .then(async (res) => {
         if (res.ok) {
+          const { accessToken, refreshToken } = await res.json();
+          setCookie("accessToken", accessToken);
+          setCookie("refreshToken", refreshToken);
           toast.success("Login Success");
           route.push("/main");
         } else {
