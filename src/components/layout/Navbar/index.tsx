@@ -48,6 +48,10 @@ export const Navbar = () => {
     });
   };
 
+  const noNavbar = ["/welcome", "/login", "/register"];
+
+  if (noNavbar.includes(pathname)) return null;
+
   return (
     <nav className="w-full flex justify-between items-center bg-white px-6 py-3">
       <div className="rounded-md size-[32px] lg:size-[64px] relative">
@@ -195,7 +199,12 @@ export const Navbar = () => {
                             >
                               Kembali
                             </Button>
-                            <Button onClick={() => onLogOut()} className="w-full">Ya, keluar</Button>
+                            <Button
+                              onClick={() => onLogOut()}
+                              className="w-full"
+                            >
+                              Ya, keluar
+                            </Button>
                           </div>
                         </DialogContent>
                       </Dialog>
