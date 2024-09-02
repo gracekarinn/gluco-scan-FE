@@ -1,5 +1,4 @@
 import React from "react";
-import { Footer } from "./Footer";
 import { Navbar } from "./Navbar";
 import { Toaster } from "../ui/sonner";
 
@@ -11,7 +10,6 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
       <main className="min-h-screen min-[320px]:w-[300px] min-[390px]:w-[375px] lg:w-[750px] px-4">
         {children}
       </main>
-      <Footer />
     </main>
   );
 };
