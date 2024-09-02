@@ -14,6 +14,10 @@ interface UserDataInterface {
   riwayatPenyakit: string | null;
   email: string;
   password: string;
+  batasGula: Number;
+  isAdmin: boolean;
+  isPro: boolean;
+  proUntil: Date | null;
   createdAt: Date;
   updatedAt: Date;
   refreshToken: string | null;
