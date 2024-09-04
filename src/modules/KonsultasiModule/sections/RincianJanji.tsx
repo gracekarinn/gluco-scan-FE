@@ -1,8 +1,5 @@
 import React from "react";
 import { ChevronLeft } from "lucide-react";
-import Image from "next/image";
-import { Star, Clock, Banknote } from "lucide-react";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   Card,
   CardContent,
@@ -11,19 +8,17 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { HARI_DOKTER } from "../constant";
-import { JAM_DOKTER } from "../constant";
-import { ChatBubbleLeftIcon } from "@heroicons/react/16/solid";
+import Image from "next/image";
+import { Star, Clock, Banknote } from "lucide-react";
+import { PencilSquareIcon } from "@heroicons/react/16/solid";
+import { CalendarIcon } from "@heroicons/react/16/solid";
 
-export const IsiDokter = () => {
+export const RincianJanji = () => {
   return (
     <section className="flex flex-col pt-4 gap-y-4 px-4">
       <div className="flex gap-3">
         <ChevronLeft />
-        <p className="font-bold">Deskripsi Dokter</p>
+        <p className="font-bold">Rincian Janji Temu</p>
       </div>
       <div>
         <Card className="overflow-hidden">
@@ -60,30 +55,22 @@ export const IsiDokter = () => {
           </CardContent>
         </Card>
       </div>
-      <div>
-        <h3 className="font-semibold text-lg">Tentang Dokter</h3>
-        <p className="text-sm text-[#101623] mt-2">
-          dr. Maya Puspita Sari Sp.PD, AIFO merupakan alumnus Fakultas
-          Kedokteran Universitas Sriwijaya pada 2015 dan 2023. Dokter Maya
-          Puspita Sari Sp.PD,....
-        </p>
+      <div className="flex flex-col pb-4">
+        <div className="flex items-center gap-2">
+          Tanggal Temu <PencilSquareIcon width={16} height={16} />
+        </div>
+        <div className="flex items-center gap-2">
+          <CalendarIcon width={16} height={16} className="text-orange-500" />{" "}
+          Rabu, 23 Juni 2024 | 02.00 PM
+        </div>
       </div>
-      <div>
-        <Tabs defaultValue="online" className="w-full">
-          <TabsList className="grid w-full grid-cols-2">
-            <TabsTrigger value="online">Daring</TabsTrigger>
-            <TabsTrigger value="offline">Tatap Muka</TabsTrigger>
-          </TabsList>
-          <TabsContent value="online">
-            <div className=""></div>
-          </TabsContent>
-        </Tabs>
-      </div>
-      <div className="flex gap-2">
-        <Button variant="secondary" className="p-2">
-          <ChatBubbleLeftIcon width={30} height={30} />
-        </Button>
-        <Button className="w-full">Reservasi</Button>
+      <div className="gap-y-4 border-y-2 border-b-[#E8F3F1] border-t-[#E8F3F1]">
+        <div className="flex flex-col">
+          <p className="mt-4">Detail Pembayaran</p>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
       </div>
     </section>
   );
