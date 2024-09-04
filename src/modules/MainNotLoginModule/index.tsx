@@ -4,19 +4,11 @@ import MulaiSekarang from "./sections/MulaiSekarang";
 import CheckThisOut from "./sections/CheckThisOut";
 import FiturKami from "./sections/FiturKami";
 import { PaketLangganan } from "./sections/PaketLangganan";
-import {
-  Scanner as ScannerComp,
-  IScannerProps,
-  outline,
-  boundingBox,
-  centerText,
-  useDevices,
-} from "@yudiel/react-qr-scanner";
+import { Scanner as ScannerComp } from "@yudiel/react-qr-scanner";
 
 const MainNotLoginModule = () => {
-  const [data, setData] = useState<any>("Not Found");
+  const [data, setData] = useState<string>("Not Found");
   const [tracker, setTracker] = useState<string | undefined>("centerText");
-
 
   return (
     <div className="flex flex-col gap-y-20">
@@ -46,8 +38,10 @@ const MainNotLoginModule = () => {
           "upc_e",
         ]}
         onScan={(detectedCodes) => {
-          console.log(`onScan: ${detectedCodes}`);
-          setData(detectedCodes);
+          console.log("onScan:", JSON.stringify(detectedCodes, null, 2));
+          if (detectedCodes && detectedCodes.length > 0) {
+            setData(detectedCodes[0].rawValue);
+          }
         }}
         onError={(error) => {
           console.log(`onError: ${error}'`);
@@ -62,7 +56,7 @@ const MainNotLoginModule = () => {
         allowMultiple={true}
         scanDelay={2000}
       />
-      <p>{data}</p>
+      <p>Raw Code: {data}</p>
       <CheckThisOut />
       <FiturKami />
       <PaketLangganan />
