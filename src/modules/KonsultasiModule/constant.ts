@@ -45,3 +45,63 @@ export const ISI_DOKTER = [
     harga: "Rp 55.000 - Rp 300.000",
   },
 ];
+
+export const HARI_DOKTER = [
+  {
+    hari: "Senin",
+    tanggal: "21",
+  },
+  {
+    hari: "Tue",
+    tanggal: "22",
+  },
+  {
+    hari: "Wed",
+    tanggal: "23",
+  },
+  {
+    hari: "Thu",
+    tanggal: "24",
+  },
+  {
+    hari: "Fri",
+    tanggal: "25",
+  },
+  {
+    hari: "Sat",
+    tanggal: "26",
+  },
+];
+
+export const JAM_DOKTER = [
+  {
+    jam: "08:00",
+  },
+  {
+    jam: "09:00",
+  },
+  {
+    jam: "11:00",
+  },
+  {
+    jam: "01:00",
+  },
+  {
+    jam: "02:00",
+  },
+  {
+    jam: "13:00",
+  },
+  {
+    jam: "03:00",
+  },
+  {
+    jam: "04:00",
+  },
+  {
+    jam: "07:00",
+  },
+  {
+    jam: "08:00",
+  },
+];
