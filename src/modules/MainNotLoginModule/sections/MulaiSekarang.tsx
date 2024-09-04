@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 const MulaiSekarang = () => {
   return (
@@ -13,9 +14,11 @@ const MulaiSekarang = () => {
           Bersama <span className="italic">GlucoScan, </span>menuju hidup yang
           lebih sehat dan terkendali
         </p>
-        <Button variant="primary" className="w-[189px]">
-          Mulai Sekarang
-        </Button>
+        <Link href={"/welcome"}>
+          <Button variant="primary" className="w-[189px]">
+            Mulai Sekarang
+          </Button>
+        </Link>
       </div>
       <div>
         <Image src="/darah-keren.png" alt="darah" width={145} height={186} />
