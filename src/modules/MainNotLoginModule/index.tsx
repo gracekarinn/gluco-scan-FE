@@ -5,13 +5,26 @@ import CheckThisOut from "./sections/CheckThisOut";
 import FiturKami from "./sections/FiturKami";
 import { PaketLangganan } from "./sections/PaketLangganan";
 import { Scanner as ScannerComp } from "@yudiel/react-qr-scanner";
+import { Button } from "@/components/ui/button";
 
 const MainNotLoginModule = () => {
   const [data, setData] = useState<string>("Not Found");
-  const [tracker, setTracker] = useState<string | undefined>("centerText");
+
+  const onScan = async (codes: string) => {
+    const data = await fetch(
+      " https://world.openfoodfacts.org/api/v2/product/" + codes + ".json",
+      {
+        method: "GET",
+      }
+    );
+
+    const response = await data.json();
+    console.log(response);
+  };
 
   return (
     <div className="flex flex-col gap-y-20">
+      <Button onClick={() => onScan("737628064502")}>Click Me</Button>
       <MulaiSekarang />
       <ScannerComp
         formats={[
@@ -40,7 +53,8 @@ const MainNotLoginModule = () => {
         onScan={(detectedCodes) => {
           console.log("onScan:", JSON.stringify(detectedCodes, null, 2));
           if (detectedCodes && detectedCodes.length > 0) {
-            setData(detectedCodes[0].rawValue);
+            const code = detectedCodes[0].rawValue;
+            onScan(code);
           }
         }}
         onError={(error) => {
