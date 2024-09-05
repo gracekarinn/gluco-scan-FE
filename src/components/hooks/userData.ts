@@ -33,15 +33,16 @@ const useUserData = () => {
     const fetchData = async () => {
       try {
         const data = await getUserData();
+        setUserData(data);
+        setIsLoading(false);
         if (data === null) {
           if (protectedPaths.includes(pathname)) {
             router.replace("/welcome");
-          } 
-        }
-        setUserData(data);
-        setIsLoading(false);
-        if (protectedPathsLogin.includes(pathname)) {
-          router.replace("/profile");
+          }
+        } else {
+          if (protectedPathsLogin.includes(pathname)) {
+            router.replace("/profile");
+          }
         }
       } catch (error) {
         setIsLoading(false);
