@@ -63,7 +63,7 @@ export const CariDokter = () => {
                   </div>
                   <div className="flex items-center mt-2 text-sm p-1 rounded-lg bg-neutral-50 max-w-[170px]">
                     <Banknote className="w-4 h-4 max-sm:w-10 text-orange-500 mr-1" />
-                    <span className="text-neutral-500 text-[12px]">
+                    <span className="text-neutral-500 text-[12px] max-lg:text-[11px] max-md:text-[9px]">
                       {doctor.harga}
                     </span>
                   </div>
