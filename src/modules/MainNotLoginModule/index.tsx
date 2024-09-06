@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import MulaiSekarang from "./sections/MulaiSekarang";
 import CheckThisOut from "./sections/CheckThisOut";
 import FiturKami from "./sections/FiturKami";
@@ -21,6 +21,22 @@ const MainNotLoginModule = () => {
     const response = await data.json();
     console.log(response);
   };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await fetch(
+        "https://world.openfoodfacts.org/api/v2/product/737628064502.json",
+        {
+          method: "GET",
+        }
+      );
+
+      const response = await data.json();
+      console.log(response);
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <div className="flex flex-col gap-y-20">
