@@ -11,8 +11,15 @@ export const PaketLangganan = ({ onNext }: { onNext: () => void }) => {
         </p>
       </div>
       <div className="flex flex-col gap-4">
-        <SubsCard onNext={onNext} />
-        <SubsCard onNext={onNext} />
+        <SubsCard onNext={onNext}>
+          <span>Rp25.000</span>
+        </SubsCard>
+        <SubsCard onNext={onNext}>
+          <span>Rp140.000</span>
+        </SubsCard>
+        <SubsCard onNext={onNext}>
+          <span>Rp250.000</span>
+        </SubsCard>
       </div>
     </section>
   );
