@@ -7,10 +7,12 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { getCookies } from "cookies-next";
+import { useRouter } from "next/navigation";
 
-export const Pembayaran = () => {
+export const Pembayaran = ({ onBack }: { onBack: () => void }) => {
   const [selected, setSelected] = useState<number>(0);
   const [openDialog, setOpenDialog] = useState(false);
+  const router = useRouter();
 
   const onBayar = async () => {
     const response = await fetch("/api/users/update/membership", {
@@ -54,7 +56,7 @@ export const Pembayaran = () => {
         </DialogContent>
       </Dialog>
       <div className="flex gap-2 items-center">
-        <ChevronLeft size={24} />
+        <ChevronLeft onClick={() => onBack()} className="cursor-pointer w-6" />
         <h1 className="text-M2 font-medium text-[#101623]">Pembayaran</h1>
       </div>
       <h2 className="mt-5 mb-3 text-M3 font-medium">
