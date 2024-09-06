@@ -10,9 +10,9 @@ const MulaiSekarang = () => {
         <h1 className="font-bold text-2xl max-md:text-lg">
           Kendalikan Gula, <br className="md:hidden" /> Kendalikan Hidup
         </h1>
-        <p className="max-md:text-sm">
+        <p className="max-md:text-sm text-[#101623]">
           Bersama
-          <span className="bg-orange-200 text-white mx-1 rounded italic">
+          <span className="bg-orange-200 mx-1 rounded italic">
             GlucoScan,
           </span>
           menuju hidup yang lebih sehat dan terkendali
