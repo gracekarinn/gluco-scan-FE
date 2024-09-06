@@ -71,7 +71,7 @@ export const ProfileModule = () => {
           onNext={() => setPage((prev) => prev + 1)}
         />
       )}
-      {page === 3 && <Pembayaran />}
+      {page === 3 && <Pembayaran onBack={() => setPage((prev) => prev - 1)} />}
     </main>
   );
 };
