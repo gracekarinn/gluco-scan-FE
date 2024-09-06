@@ -9,6 +9,9 @@ const nextConfig = {
               destination: 'http://localhost:3001/:path*',
             },
           ],
+    images: {
+      domains: ['images.openfoodfacts.org'],
+    },
   }
 
 export default nextConfig;
