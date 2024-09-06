@@ -16,9 +16,8 @@ const WelcomePageModule = () => {
       />
       <h1 className="pt-5 font-bold text-[32px]">Selamat Datang!</h1>
       <p className="text-[14px] text-center">
-        Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
-        Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
-        Lorem ipsum Lorem ipsum
+        Scan makanan atau minuman Anda dan ketahui kandungan gulanya secara
+        instan. Mulai hidup sehat dengan GlucoScan!
       </p>
       <div className="flex flex-col gap-y-2 mt-5 mb-10 w-[327px]">
         <Link href="/login">
