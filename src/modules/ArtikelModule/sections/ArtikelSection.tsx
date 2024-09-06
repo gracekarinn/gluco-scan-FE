@@ -6,7 +6,7 @@ import Link from "next/link";
 const ArtikelSection = () => {
   return (
     <section className="pb-4">
-      <div className="flex mx-4 mt-3 gap-4 items-center">
+      <div className="flex mx-4 mt-3 gap-4  items-center">
         <Link
           href="/main"
           className="text-gray-600 hover:text-gray-800 transition-colors"
