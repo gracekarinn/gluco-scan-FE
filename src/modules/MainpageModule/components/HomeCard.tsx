@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { PencilSquareIcon } from "@heroicons/react/16/solid";
+import Link from "next/link";
 
 const HomeCard = () => {
   return (
@@ -40,13 +41,15 @@ const HomeCard = () => {
           <p className="text-[14px] mb-2">
             Jangan lupa untuk melakukan monitor asupan gula hari ini!
           </p>
-          <Button
-            variant="primary"
-            className="flex items-center justify-center rounded-3xl bg-gradient-to-r from-orange-400 to-orange-500 hover:from-orange-500 hover:to-orange-600"
-          >
-            <PencilSquareIcon className="w-8 h-8 mr-2" />
-            <span className="text-xs">Kontrol Harian</span>
-          </Button>
+          <Link href="/monitor">
+            <Button
+              variant="primary"
+              className="flex items-center justify-center rounded-3xl bg-gradient-to-r from-orange-400 to-orange-500 hover:from-orange-500 hover:to-orange-600"
+            >
+              <PencilSquareIcon className="w-8 h-8 mr-2" />
+              <span className="text-xs">Kontrol Harian</span>
+            </Button>
+          </Link>
         </div>
       </div>
     </div>
