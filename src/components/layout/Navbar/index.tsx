@@ -22,6 +22,7 @@ import {
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { getCookies, deleteCookie } from "cookies-next";
 import { toast } from "sonner";
+import Link from "next/link";
 
 export const Navbar = () => {
   const { userData, isLoading } = useUserData();
@@ -170,9 +171,11 @@ export const Navbar = () => {
                       </div>
                       <Dialog open={openDialog} onOpenChange={setOpenDialog}>
                         <DialogTrigger asChild>
-                          <div className="flex gap-2 text-red-600 text-M3 font-medium cursor-pointer items-center">
-                            <LogOut size={16} /> Sign out
-                          </div>
+                          <Link href="/">
+                            <div className="flex gap-2 text-red-600 text-M3 font-medium cursor-pointer items-center">
+                              <LogOut size={16} /> Sign out
+                            </div>
+                          </Link>
                         </DialogTrigger>
                         <DialogContent
                           className="border border-[#EEF0F2] rounded-[8px] p-6 bg-[#f7f7f7] w-[300px] flex flex-col gap-2"
@@ -186,7 +189,7 @@ export const Navbar = () => {
                               fill
                             />
                           </div>
-                          <h2 className="text-H4 font-bold text-center text-grey-900 whitespace-nowrap">
+                          <h2 className="text-H5 font-bold text-center text-grey-900 whitespace-nowrap">
                             Apakah Anda yakin Sign Out?
                           </h2>
                           <p className="text-P5 text-[#737373] text-center">
