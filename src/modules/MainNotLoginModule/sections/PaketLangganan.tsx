@@ -11,8 +11,15 @@ export const PaketLangganan = () => {
         </p>
       </div>
       <div className="flex flex-col gap-4">
-        <SubsCard />
-        <SubsCard />
+        <SubsCard>
+          <span>Rp25.000</span>
+        </SubsCard>
+        <SubsCard>
+          <span>Rp140.000</span>
+        </SubsCard>
+        <SubsCard>
+          <span>Rp250.000</span>
+        </SubsCard>
       </div>
     </section>
   );
