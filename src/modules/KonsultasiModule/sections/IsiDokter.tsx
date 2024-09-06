@@ -1,30 +1,29 @@
+"use client";
 import React from "react";
 import { ChevronLeft } from "lucide-react";
 import Image from "next/image";
 import { Star, Clock, Banknote } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { HARI_DOKTER } from "../constant";
 import { JAM_DOKTER } from "../constant";
 import { ChatBubbleLeftIcon } from "@heroicons/react/16/solid";
+import { useState } from "react";
+import Link from "next/link";
 
 export const IsiDokter = () => {
+  const [selectedDate, setSelectedDate] = useState(HARI_DOKTER[2].tanggal);
+  const [selectedTime, setSelectedTime] = useState(JAM_DOKTER[4].jam);
+
   return (
     <section className="flex flex-col pt-4 gap-y-4 px-4">
-      <div className="flex gap-3">
-        <ChevronLeft />
-        <p className="font-bold">Deskripsi Dokter</p>
-      </div>
+      <Link href="/konsultasi">
+        <div className="flex gap-3">
+          <ChevronLeft />
+          <p className="font-bold">Deskripsi Dokter</p>
+        </div>
+      </Link>
       <div>
         <Card className="overflow-hidden">
           <CardContent className="p-4 flex items-center space-x-4">
@@ -65,7 +64,8 @@ export const IsiDokter = () => {
         <p className="text-sm text-[#101623] mt-2">
           dr. Maya Puspita Sari Sp.PD, AIFO merupakan alumnus Fakultas
           Kedokteran Universitas Sriwijaya pada 2015 dan 2023. Dokter Maya
-          Puspita Sari Sp.PD,....
+          Puspita Sari Sp.PD,{" "}
+          <span className="text-blue-500">Read More....</span>
         </p>
       </div>
       <div>
@@ -75,15 +75,84 @@ export const IsiDokter = () => {
             <TabsTrigger value="offline">Tatap Muka</TabsTrigger>
           </TabsList>
           <TabsContent value="online">
-            <div className=""></div>
+            <div className="p-4 w-full rounded-lg mx-auto">
+              <div className="flex justify-between mb-4">
+                {HARI_DOKTER.map((item) => (
+                  <button
+                    key={item.hari}
+                    onClick={() => setSelectedDate(item.tanggal)}
+                    className={`flex flex-col items-center p-2 rounded-lg transition-colors ${
+                      selectedDate === item.tanggal
+                        ? "bg-orange-100 border border-orange-500"
+                        : "bg-white hover:bg-gray-200"
+                    }`}
+                  >
+                    <span className="text-sm text-gray-600">{item.hari}</span>
+                    <span className="font-bold">{item.tanggal}</span>
+                  </button>
+                ))}
+              </div>
+              <div className="grid grid-cols-3 gap-2">
+                {JAM_DOKTER.map((item) => (
+                  <button
+                    key={item.jam}
+                    onClick={() => setSelectedTime(item.jam)}
+                    className={`py-2 px-4 rounded-lg text-sm transition-colors ${
+                      selectedTime === item.jam
+                        ? "bg-orange-500 text-white"
+                        : "bg-white text-gray-800 hover:bg-gray-200"
+                    }`}
+                  >
+                    {item.jam}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </TabsContent>
+          <TabsContent value="offline">
+            <div className="p-4 w-full rounded-lg mx-auto">
+              <div className="flex justify-between mb-4">
+                {HARI_DOKTER.map((item) => (
+                  <button
+                    key={item.hari}
+                    onClick={() => setSelectedDate(item.tanggal)}
+                    className={`flex flex-col items-center p-2 rounded-lg transition-colors ${
+                      selectedDate === item.tanggal
+                        ? "bg-orange-100 border border-orange-500"
+                        : "bg-white hover:bg-gray-200"
+                    }`}
+                  >
+                    <span className="text-sm text-gray-600">{item.hari}</span>
+                    <span className="font-bold">{item.tanggal}</span>
+                  </button>
+                ))}
+              </div>
+              <div className="grid grid-cols-3 gap-2">
+                {JAM_DOKTER.map((item) => (
+                  <button
+                    key={item.jam}
+                    onClick={() => setSelectedTime(item.jam)}
+                    className={`py-2 px-4 rounded-lg text-sm transition-colors ${
+                      selectedTime === item.jam
+                        ? "bg-orange-500 text-white"
+                        : "bg-white text-gray-800 hover:bg-gray-200"
+                    }`}
+                  >
+                    {item.jam}
+                  </button>
+                ))}
+              </div>
+            </div>
           </TabsContent>
         </Tabs>
       </div>
-      <div className="flex gap-2">
+      <div className="flex gap-2 w-full">
         <Button variant="secondary" className="p-2">
           <ChatBubbleLeftIcon width={30} height={30} />
         </Button>
-        <Button className="w-full">Reservasi</Button>
+        <Link href="/reservasi" className="mb-10 w-full">
+          <Button className="w-full">Reservasi</Button>
+        </Link>
       </div>
     </section>
   );
