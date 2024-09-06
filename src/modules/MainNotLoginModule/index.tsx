@@ -6,9 +6,10 @@ import FiturKami from "./sections/FiturKami";
 import { PaketLangganan } from "./sections/PaketLangganan";
 import { Scanner as ScannerComp } from "@yudiel/react-qr-scanner";
 import { Button } from "@/components/ui/button";
+import { ProductDetailProps } from "../DetailProductModule/interface";
 
 const MainNotLoginModule = () => {
-  const [data, setData] = useState<string>("Not Found");
+  const [data, setData] = useState<ProductDetailProps>();
 
   const onScan = async (codes: string) => {
     const data = await fetch(
@@ -32,6 +33,17 @@ const MainNotLoginModule = () => {
       );
 
       const response = await data.json();
+      setData({
+        productId: response.code,
+        namaProduk: "",
+        kadarGula: 0,
+        image: "string",
+        takaran: "string",
+        energyKcal: 0,
+        proteins: 0,
+        fats: 0,
+        carbohydrates: 0,
+      });
       console.log(response);
     };
 
@@ -86,7 +98,7 @@ const MainNotLoginModule = () => {
         allowMultiple={true}
         scanDelay={2000}
       />
-      <p>Raw Code: {data}</p>
+      {JSON.stringify(data)}
       <CheckThisOut />
       <FiturKami />
       <PaketLangganan />
