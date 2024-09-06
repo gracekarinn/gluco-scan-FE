@@ -35,14 +35,14 @@ const MainNotLoginModule = () => {
       const response = await data.json();
       setData({
         productId: response.code,
-        namaProduk: "",
-        kadarGula: 0,
-        image: "string",
+        namaProduk: response.product.product_name,
+        kadarGula: response.product.nutriments.sugars,
+        image: response.product.image_url,
         takaran: "string",
-        energyKcal: 0,
-        proteins: 0,
-        fats: 0,
-        carbohydrates: 0,
+        energyKcal: response.product.nutriments.energy_value,
+        proteins: response.product.nutriments.proteins,
+        fats: response.product.nutriments.fat,
+        carbohydrates: response.product.nutriments.carbohydrates,
       });
       console.log(response);
     };
