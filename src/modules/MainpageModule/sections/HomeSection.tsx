@@ -6,6 +6,7 @@ import { MENU_ITEMS } from "../constant";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import HomeCard from "../components/HomeCard";
+import { ISI_ARTIKEL } from "@/modules/ArtikelModule/constant";
 
 const HomeSection = () => {
   return (
@@ -45,6 +46,28 @@ const HomeSection = () => {
       </div>
       <div className="mt-4">
         <HomeCard />
+      </div>
+      <div className="pt-4">
+        <div className="flex justify-between items-center mb-4">
+          <h2 className="text-xl font-bold">Rekomendasi Media</h2>
+          <span className="text[#828282] text-sm">More</span>
+        </div>
+        <div className="overflow-x-auto">
+          <div className="flex space-x-4 pb-4">
+            {ISI_ARTIKEL.map((artikel) => (
+              <div key={artikel.id} className="flex-none w-48">
+                <img
+                  src={artikel.img}
+                  alt={artikel.title}
+                  className="w-full h-32 object-cover rounded-lg mb-2"
+                />
+                <h3 className="font-semibold text-sm line-clamp-2">
+                  {artikel.title}
+                </h3>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );
