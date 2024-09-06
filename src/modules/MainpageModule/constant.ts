@@ -9,7 +9,7 @@ export const MENU_ITEMS = [
   {
     icon: BarcodeIcon,
     title: "Scan Produk",
-    url: "/scan",
+    url: "/produk/scan",
   },
   {
     icon: PresentationChartLineIcon,
