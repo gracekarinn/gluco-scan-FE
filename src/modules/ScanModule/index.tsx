@@ -1,7 +1,6 @@
-import React from 'react'
+import React from "react";
+import ScanProduk from "./sections/ScanProduk";
 
 export const ScanModule = () => {
-  return (
-    <div> ScanModule</div>
-  )
-}
+  return <ScanProduk />;
+};
