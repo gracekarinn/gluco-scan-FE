@@ -22,7 +22,7 @@ const ScanProduk = () => {
   };
 
   if (isLoading) {
-    return <Skeleton className="min-h-screen w-[300px] my-12" />;
+    return <Skeleton className="min-h-screen w-[300px] lg:w-[700px] my-12" />;
   }
   return (
     <section className="mt-4">
