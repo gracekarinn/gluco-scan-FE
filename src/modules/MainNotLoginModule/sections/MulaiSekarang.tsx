@@ -11,8 +11,11 @@ const MulaiSekarang = () => {
           Kendalikan Gula, <br className="md:hidden" /> Kendalikan Hidup
         </h1>
         <p className="max-md:text-sm">
-          Bersama <span className="italic">GlucoScan, </span>menuju hidup yang
-          lebih sehat dan terkendali
+          Bersama
+          <span className="bg-orange-200 text-white mx-1 rounded italic">
+            GlucoScan,
+          </span>
+          menuju hidup yang lebih sehat dan terkendali
         </p>
         <Link href={"/welcome"}>
           <Button variant="primary" className="w-[189px]">
