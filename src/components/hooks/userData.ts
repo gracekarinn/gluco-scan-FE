@@ -26,7 +26,7 @@ const useUserData = () => {
 
   const pathname = usePathname();
   const router = useRouter();
-  const protectedPaths = ["/profile", "/monitor", "/konsultasi"];
+  const protectedPaths = ["/profile", "/monitor", "/konsultasi", "/produk", "/produk/scan", "/main"];
   const protectedPathsLogin = ["/login", "/register", "/welcome"];
 
   useEffect(() => {
