@@ -187,7 +187,7 @@ export const Navbar = () => {
                             />
                           </div>
                           <h2 className="text-H4 font-bold text-center text-grey-900 whitespace-nowrap">
-                            Masukkan batasan harian
+                            Apakah Anda yakin Sign Out?
                           </h2>
                           <p className="text-P5 text-[#737373] text-center">
                             Anda harus mendaftar ulang jika melanjutkan
