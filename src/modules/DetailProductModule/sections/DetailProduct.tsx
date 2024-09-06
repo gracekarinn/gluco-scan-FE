@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { ProductDetailProps } from "../interface";
 import Image from "next/image";
 import { Zap, EggFried } from "lucide-react";
@@ -12,6 +12,7 @@ import { Rekomendasi } from "../elements/Rekomendasi";
 import { getCookies } from "cookies-next";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 
 export const DetailProduct: React.FC<ProductDetailProps> = ({
   productId,
@@ -26,12 +27,34 @@ export const DetailProduct: React.FC<ProductDetailProps> = ({
 }) => {
   const { userData, isLoading } = useUserData();
   const router = useRouter();
+  const [openDialog, setOpenDialog] = useState(false);
 
   if (isLoading) {
     return <Skeleton className="min-h-screen w-[300px] lg:w-[700px] " />;
   }
 
+  if (!userData) {
+    router.push("/welcome");
+    return;
+  }
+
   const onSubmit = async () => {
+    const gula = await fetch("http://localhost:3001/product/gula", {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${getCookies().accessToken}`,
+      },
+    });
+
+    if (gula.status === 200) {
+      const gulaArr = await gula.json();
+      const isMaxGula = gulaArr.at(-1) >= (userData?.batasGula ?? 9999);
+      console.log(isMaxGula);
+      return isMaxGula ? setOpenDialog(true) : onSubmitDb();
+    }
+  };
+
+  const onSubmitDb = async () => {
     await fetch("http://localhost:3001/product/submit", {
       headers: {
         "Content-Type": "application/json",
@@ -47,17 +70,43 @@ export const DetailProduct: React.FC<ProductDetailProps> = ({
         takaran,
         userId: userData?.id,
       }),
-    })
-      .then(() => {
-        router.push("/monitor");
-        toast.success("Berhasil menambahkan asupan");
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    }).then(() => {
+      router.push("/monitor");
+      toast.success("Berhasil menambahkan asupan");
+    });
   };
+
   return (
     <section className="flex flex-col">
+      <Dialog open={openDialog} onOpenChange={setOpenDialog}>
+        <DialogContent
+          className="border border-[#EEF0F2] rounded-[8px] p-6 bg-[#f7f7f7] w-[300px] flex flex-col gap-2"
+          hideClose
+        >
+          <div className="mx-auto size-[80px] relative">
+            <Image
+              src="/exclamation-triangle-fill.png"
+              alt="food"
+              className="object-contain"
+              fill
+            />
+          </div>
+          <h2 className="text-H5 font-bold text-center text-grey-900 whitespace-nowrap">
+            Telah melewati batas harian
+          </h2>
+          <p className="text-P5 text-[#737373] text-center">
+            Konsumsi gula harian Anda telah melebihi batas yang Anda tetapkan.
+          </p>
+          <div className="grid grid-cols-2 gap-1 mt-4">
+            <Button variant={"secondary"} onClick={() => setOpenDialog(false)}>
+              Kembali
+            </Button>
+            <Button onClick={() => onSubmitDb()} className="w-full">
+              Lanjutkan
+            </Button>
+          </div>
+        </DialogContent>
+      </Dialog>
       <div className="relative max-[340px]:w-[158px] w-[188px] mx-auto max-[340px]:h-[150px] h-[188px] mb-3">
         <Image
           alt={namaProduk}
