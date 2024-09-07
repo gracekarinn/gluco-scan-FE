@@ -20,7 +20,7 @@ export const LoginForm = () => {
   });
 
   const onSubmit = async (data: submitLoginData) => {
-    await fetch("/api/auth/login", {
+    await fetch("https://gluco-scan-be-production.up.railway.app/auth/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

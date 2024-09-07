@@ -34,7 +34,7 @@ export const Navbar = () => {
 
   const onLogOut = async () => {
     console.log("logout");
-    await fetch("/api/auth/logout", {
+    await fetch("https://gluco-scan-be-production.up.railway.app/auth/logout", {
       headers: {
         Authorization: `Bearer ${getCookies().accessToken}`,
       },

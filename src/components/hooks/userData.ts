@@ -6,7 +6,7 @@ import { UserDataInterface } from "./interface";
 import { useRouter } from "next/navigation";
 
 const getUserData = async () => {
-  const response = await fetch("/api/users/data", {
+  const response = await fetch("https://gluco-scan-be-production.up.railway.app/users/data", {
     headers: {
       Authorization: `Bearer ${getCookies().accessToken}`,
     },

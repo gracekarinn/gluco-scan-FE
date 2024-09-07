@@ -60,7 +60,7 @@ export const RegisterForm = () => {
     setData((prev) => ({ ...prev, ...formData }));
     setPage((prev) => prev + 1);
 
-    await fetch("api/auth/register", {
+    await fetch("https://gluco-scan-be-production.up.railway.app/auth/register", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
