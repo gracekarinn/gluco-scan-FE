@@ -1,7 +1,7 @@
 export interface ProductCardProps {
     id: string;
     productId: string;
-    namaProduk: string;
+    namaProduct: string;
     kadarGula: number;
     image: string;
     takaran: string;

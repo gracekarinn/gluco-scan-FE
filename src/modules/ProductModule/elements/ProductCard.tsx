@@ -4,7 +4,7 @@ import { ProductCardProps } from "../interface";
 import Link from "next/link";
 
 export const ProductCard: React.FC<ProductCardProps> = ({
-  namaProduk,
+  namaProduct,
   image,
   takaran,
   productId,
@@ -17,7 +17,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
       <div className="p-5 bg-white-100 rounded-[20px]">
         <div className="relative max-[340px]:w-[90px] w-[128px] max-[340px]:h-[90px] h-[128px]">
           <Image
-            alt={namaProduk}
+            alt={namaProduct}
             src={image}
             fill
             sizes="none"
@@ -26,7 +26,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
         </div>
       </div>
       <h1 className="font-medium text-center text-M4 text-[#101623]">
-        {namaProduk}
+        {namaProduct}
         <br />
         {`(${takaran})`}
       </h1>

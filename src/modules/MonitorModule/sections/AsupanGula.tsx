@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Chart } from "../elements/Chart";
 import { ProductCard } from "../elements/ProductCard";
 import { Button } from "@/components/ui/button";
@@ -11,6 +11,11 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import InputForm from "@/components/ui/inputform";
 import { Form } from "@/components/ui/form";
+import { getCookies } from "cookies-next";
+import { toast } from "sonner";
+import useUserData from "@/components/hooks/userData";
+import { ProductPromise } from "../interface";
+import { Skeleton } from "@/components/ui/skeleton";
 
 const gulaDarahSchema = z.object({
   maxGula: z.string().refine(
@@ -25,14 +30,46 @@ const gulaDarahSchema = z.object({
 export type submitGulaDarahData = z.infer<typeof gulaDarahSchema>;
 
 export const AsupanGula = () => {
+  const { userData } = useUserData();
   const [open, setOpen] = useState(false);
+  const [product, setProduct] = useState<ProductPromise[] | null>(null);
   const form = useForm<submitGulaDarahData>({
     resolver: zodResolver(gulaDarahSchema),
   });
 
-  const onSubmit = (data: submitGulaDarahData) => {
-    console.log(data);
+  const onSubmit = async (data: submitGulaDarahData) => {
+    await fetch(
+      "http://localhost:3001/users/set/batasGula/" + Number(data.maxGula),
+      {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${getCookies().accessToken}`,
+        },
+      }
+    ).then((res) => {
+      if (res.status === 200) {
+        setOpen(false);
+        toast.success("Batasan gula harian berhasil diubah");
+        window.location.reload();
+      }
+    });
   };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await fetch("http://localhost:3001/product/date", {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${getCookies().accessToken}`,
+        },
+      });
+
+      const dataJson = await data.json();
+      setProduct(dataJson);
+    };
+    fetchData();
+  }, []);
 
   return (
     <section
@@ -50,63 +87,27 @@ export const AsupanGula = () => {
           *Hover to see the values
         </p>
         <Chart />
-        <h1 className="text-H5 font-bold text-[#051532] mb-3">Today</h1>
-        <div className="flex flex-col max-lg:max-h-[580px] lg:max-h-[400px] gap-3 overflow-y-scroll">
-          <ProductCard
-            name="Coca cola"
-            image="/darah-keren.png"
-            gula={30}
-            weight="300ml"
-          />
-          <ProductCard
-            name="Coca cola"
-            image="/darah-keren.png"
-            gula={30}
-            weight="300ml"
-          />
-          <ProductCard
-            name="Coca cola"
-            image="/darah-keren.png"
-            gula={30}
-            weight="300ml"
-          />
-          <ProductCard
-            name="Coca cola"
-            image="/darah-keren.png"
-            gula={30}
-            weight="300ml"
-          />
-          <ProductCard
-            name="Coca cola"
-            image="/darah-keren.png"
-            gula={30}
-            weight="300ml"
-          />
-          <ProductCard
-            name="Coca cola"
-            image="/darah-keren.png"
-            gula={30}
-            weight="300ml"
-          />
-          <ProductCard
-            name="Coca cola"
-            image="/darah-keren.png"
-            gula={30}
-            weight="300ml"
-          />
-          <ProductCard
-            name="Coca cola"
-            image="/darah-keren.png"
-            gula={30}
-            weight="300ml"
-          />
-          <ProductCard
-            name="Coca cola"
-            image="/darah-keren.png"
-            gula={30}
-            weight="300ml"
-          />
-        </div>
+        <h1 className="text-H5 font-bold text-[#051532] mb-3">
+          Today{" "}
+          <span className="font-medium text-H6 text-neutral-200">{`(Batas Gula ${String(
+            userData?.batasGula
+          )})`}</span>
+        </h1>
+        {product === null ? (
+          <Skeleton className="min-h-[500px] w-full" />
+        ) : (
+          <div className="flex flex-col max-lg:max-h-[580px] lg:max-h-[400px] gap-3 overflow-y-scroll">
+            {product?.map((item) => (
+              <ProductCard
+                key={item.id}
+                name={item.namaProduct}
+                image={item.image}
+                gula={item.kadarGula}
+                weight={item.takaran}
+              />
+            ))}
+          </div>
+        )}
       </div>
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogTrigger asChild>
@@ -144,7 +145,9 @@ export const AsupanGula = () => {
                 form={form}
               />
               <div className="grid grid-cols-2 gap-1">
-                <Button variant={"secondary"} onClick={() => setOpen(false)}>Kembali</Button>
+                <Button variant={"secondary"} onClick={() => setOpen(false)}>
+                  Kembali
+                </Button>
                 <Button type="submit" className="w-full">
                   Tetapkan
                 </Button>

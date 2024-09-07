@@ -36,9 +36,9 @@ const HomeSection = () => {
             <Button
               variant="secondary"
               size="lg"
-              className="w-fit aspect-square mb-2"
+              className="w-[60px] h-[60px] aspect-square mb-2"
             >
-              <item.icon className="w-[14px] h-[14px]" />
+              <item.icon className="w-[47px] h-[47px]" />
             </Button>
             <span className="text-xs text-center">{item.title}</span>
           </Link>

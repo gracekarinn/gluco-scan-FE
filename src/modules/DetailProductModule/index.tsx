@@ -23,9 +23,9 @@ export const DetailProductModule = ({ id }: { id: string }) => {
         kadarGula: response.product.nutriments.sugars,
         image: response.product.image_url,
         takaran:
-          response.product.serving_quantity +
+          response.product.product_quantity +
           " " +
-          response.product.serving_quantity_unit,
+          response.product.product_quantity_unit,
         energyKcal: response.product.nutriments.energy_value,
         proteins: response.product.nutriments.proteins,
         fats: response.product.nutriments.fat,

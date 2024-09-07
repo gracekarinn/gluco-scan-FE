@@ -10,8 +10,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({
 }) => {
   return (
     <div className="p-2 pr-5 flex justify-between items-center rounded-[16px] border border-orange-100">
-      <div className="flex gap-4">
-        <div className="aspect-square bg-white rounded-md size-[60px] shadow-lg relative">
+      <div className="flex gap-4 items-center">
+        <div className="aspect-square bg-white rounded-md min-w-[60px] shadow-lg relative">
           <Image src={image} alt="food" className="object-contain" fill />
         </div>
         <div>
@@ -19,8 +19,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           <p className="text-M4 text-[#ADADAD] font-medium">{weight}</p>
         </div>
       </div>
-      <div className="size-[35px] bg-orange-500 p-2 rounded-full flex items-center text-white-100 font-bold text-H5">
-        {gula}
+      <div className="lg:size-[60px] size-[50px] bg-orange-500 p-2 rounded-full justify-center flex items-center text-white-100 font-bold text-H6 lg:text-H5">
+        <p className="text-center">{gula}</p>
       </div>
     </div>
   );
