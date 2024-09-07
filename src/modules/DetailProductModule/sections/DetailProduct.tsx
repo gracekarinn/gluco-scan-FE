@@ -39,7 +39,7 @@ export const DetailProduct: React.FC<ProductDetailProps> = ({
   }
 
   const onSubmit = async () => {
-    const gula = await fetch("http://localhost:3001/product/gula", {
+    const gula = await fetch("https://gluco-scan-be-production.up.railway.app/product/gula", {
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${getCookies().accessToken}`,
@@ -55,7 +55,7 @@ export const DetailProduct: React.FC<ProductDetailProps> = ({
   };
 
   const onSubmitDb = async () => {
-    await fetch("http://localhost:3001/product/submit", {
+    await fetch("https://gluco-scan-be-production.up.railway.app/product/submit", {
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${getCookies().accessToken}`,

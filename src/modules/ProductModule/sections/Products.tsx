@@ -18,7 +18,7 @@ export const Products = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await fetch("http://localhost:3001/product", {
+      const data = await fetch("https://gluco-scan-be-production.up.railway.app/product", {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${getCookies().accessToken}`,

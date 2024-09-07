@@ -39,7 +39,7 @@ export const AsupanGula = () => {
 
   const onSubmit = async (data: submitGulaDarahData) => {
     await fetch(
-      "http://localhost:3001/users/set/batasGula/" + Number(data.maxGula),
+      "https://gluco-scan-be-production.up.railway.app/users/set/batasGula/" + Number(data.maxGula),
       {
         method: "PATCH",
         headers: {
@@ -58,7 +58,7 @@ export const AsupanGula = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await fetch("http://localhost:3001/product/date", {
+      const data = await fetch("https://gluco-scan-be-production.up.railway.app/product/date", {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${getCookies().accessToken}`,

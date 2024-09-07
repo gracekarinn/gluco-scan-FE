@@ -6,7 +6,7 @@ const nextConfig = {
       : [
           {
             source: "/api/:path*",
-            destination: "http://localhost:3001/:path*",
+            destination: "https://gluco-scan-be-production.up.railway.app/:path*",
           },
         ],
   images: {

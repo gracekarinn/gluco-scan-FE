@@ -42,7 +42,7 @@ export const Chart = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const gulaArr = await fetch("http://localhost:3001/product/gula", {
+      const gulaArr = await fetch("https://gluco-scan-be-production.up.railway.app/product/gula", {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${getCookies().accessToken}`,
