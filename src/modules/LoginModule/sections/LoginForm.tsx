@@ -26,7 +26,6 @@ export const LoginForm = () => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(data),
-      credentials: "include",
     })
       .then(async (res) => {
         if (res.ok) {
