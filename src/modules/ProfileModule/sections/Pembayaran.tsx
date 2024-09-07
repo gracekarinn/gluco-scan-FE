@@ -15,7 +15,7 @@ export const Pembayaran = ({ onBack }: { onBack: () => void }) => {
   const router = useRouter();
 
   const onBayar = async () => {
-    const response = await fetch("/api/users/update/membership", {
+    const response = await fetch("https://gluco-scan-be-production.up.railway.app/users/update/membership", {
       headers: {
         Authorization: `Bearer ${getCookies().accessToken}`,
       },
