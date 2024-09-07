@@ -61,7 +61,6 @@ export const DetailProduct: React.FC<ProductDetailProps> = ({
         Authorization: `Bearer ${getCookies().accessToken}`,
       },
       method: "POST",
-      credentials: "include",
       body: JSON.stringify({
         productId,
         namaProduct: namaProduk,
