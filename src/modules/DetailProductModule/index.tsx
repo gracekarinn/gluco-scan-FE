@@ -4,9 +4,13 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { DetailProduct } from "./sections/DetailProduct";
 import { Skeleton } from "@/components/ui/skeleton";
+import { Frown } from "lucide-react";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
 
 export const DetailProductModule = ({ id }: { id: string }) => {
   const [data, setData] = useState<any>();
+  const [dialog, setDialog] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -19,6 +23,17 @@ export const DetailProductModule = ({ id }: { id: string }) => {
       );
 
       const response = await data.json();
+      try {
+        if (response.product.nutriments.sugars === undefined) {
+          setDialog(true);
+          setIsLoading(false);
+          return;
+        }
+      } catch (error) {
+        setDialog(true);
+        setIsLoading(false);
+        return;
+      }
       setData({
         productId: response.code,
         namaProduk: response.product.product_name,
@@ -47,15 +62,38 @@ export const DetailProductModule = ({ id }: { id: string }) => {
 
   return (
     <main>
-      <div className="flex items-center justify-start gap-4 my-4">
-        <Link href="/produk/scan">
-          <ChevronLeft size={24} className="cursor-pointer" />
-        </Link>
-        <h1 className="text-M2 font-medium lg:ml-[250px] ml-[67px] text-[#101623]">
-          Scan Product
-        </h1>
-      </div>
-      <DetailProduct {...data} />
+      <Dialog open={dialog}>
+        <DialogContent
+          className="border border-[#EEF0F2] rounded-[8px] p-6 bg-[#f7f7f7] w-[300px] flex flex-col gap-2"
+          hideClose
+        >
+          <Frown className="mx-auto size-[80px] text-orange-500" />
+          <h2 className="text-H4 font-bold text-center text-grey-900 whitespace-nowrap">
+            Data Tidak Ditemukan
+          </h2>
+          <p className="text-P5 text-[#737373] text-center">
+            Data produk tidak ditemukan, silahkan coba produk lain
+          </p>
+          <div className="mt-4">
+            <Link href={"/produk/scan"}>
+              <Button className="w-full">Kembali</Button>
+            </Link>
+          </div>
+        </DialogContent>
+      </Dialog>
+      {!dialog && !isLoading && (
+        <>
+          <div className="flex items-center justify-start gap-4 my-4">
+            <Link href="/produk/scan">
+              <ChevronLeft size={24} className="cursor-pointer" />
+            </Link>
+            <h1 className="text-M2 font-medium lg:ml-[250px] ml-[67px] text-[#101623]">
+              Scan Product
+            </h1>
+          </div>
+          <DetailProduct {...data} />
+        </>
+      )}
     </main>
   );
 };
