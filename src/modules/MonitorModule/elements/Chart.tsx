@@ -54,10 +54,13 @@ export const Chart = () => {
         .map((_, index) => {
           const date = new Date();
           date.setDate(date.getDate() - index);
-          const day = date.getDay() + 1;
+          let day = date.getDay();
+          if (day === 0) {
+            day = 7;
+          }
           const month = date.getMonth() + 1;
           const year = date.getFullYear();
-          return `${day}/${month}/${year}`;
+          return `${day + 1}/${month}/${year}`;
         })
         .reverse();
       const dataObjArr = [
