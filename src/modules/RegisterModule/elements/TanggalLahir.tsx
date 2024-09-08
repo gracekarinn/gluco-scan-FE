@@ -47,10 +47,6 @@ export const TanggalLahir = ({
             <h1 className="text-center font-bold text-grey-900 text-H3">
               Kapan kamu lahir?
             </h1>
-            <p className="text-P6 tracking-wide font-normal text-center text-grey-900 mt-4">
-              Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem
-              Ipsum Lorem Ipsum Lorem Ipsum
-            </p>
           </div>
           <FormField
             control={form.control}
