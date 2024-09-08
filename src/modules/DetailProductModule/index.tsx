@@ -1,11 +1,13 @@
 "use client";
 import { ChevronLeft } from "lucide-react";
 import Link from "next/link";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { DetailProduct } from "./sections/DetailProduct";
+import { Skeleton } from "@/components/ui/skeleton";
 
 export const DetailProductModule = ({ id }: { id: string }) => {
-  const [data, setData] = React.useState<any>();
+  const [data, setData] = useState<any>();
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -25,16 +27,24 @@ export const DetailProductModule = ({ id }: { id: string }) => {
         takaran:
           response.product.product_quantity +
           " " +
-          response.product.product_quantity_unit,
+          (response.product.product_quantity_unit === undefined
+            ? "g"
+            : response.product.product_quantity_unit),
         energyKcal: response.product.nutriments.energy_value,
         proteins: response.product.nutriments.proteins,
         fats: response.product.nutriments.fat,
         carbohydrates: response.product.nutriments.carbohydrates,
       });
+      setIsLoading(false);
     };
 
     fetchData();
   }, []);
+
+  if (isLoading) {
+    return <Skeleton className="min-h-screen w-full" />;
+  }
+
   return (
     <main>
       <div className="flex items-center justify-start gap-4 my-4">
