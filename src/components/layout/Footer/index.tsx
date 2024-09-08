@@ -32,10 +32,6 @@ export const Footer = () => {
             Depok, Indonesia
           </p>
         </div>
-        <p className="text-center text-slate-900 text-P4 tracking-wide mb-7">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        </p>
         <p className="text-P4 mb-1">
           Contact us {"("}Via Email{")"}
         </p>
