@@ -34,9 +34,6 @@ export const LoginForm = () => {
           setCookie("refreshToken", refreshToken, { maxAge: 60 * 60 * 24 });
           toast.success("Login Success");
           route.replace("/main");
-          setTimeout(() => {
-            window.location.reload();
-          }, 1000);
         } else {
           toast.error("Invalid Email or Password dm @batakwhore at X");
         }
