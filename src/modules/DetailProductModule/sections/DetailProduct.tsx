@@ -30,7 +30,7 @@ export const DetailProduct: React.FC<ProductDetailProps> = ({
   const [openDialog, setOpenDialog] = useState(false);
 
   if (isLoading) {
-    return <Skeleton className="min-h-screen w-[300px] lg:w-[700px] " />;
+    return <Skeleton className="min-h-screen w-full" />;
   }
 
   if (!userData) {
