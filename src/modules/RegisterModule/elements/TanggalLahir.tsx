@@ -83,7 +83,7 @@ export const TanggalLahir = ({
                         <Calendar
                           captionLayout="dropdown-buttons"
                           mode="single"
-                          fromYear={1990}
+                          fromYear={1900}
                           toYear={2024}
                           selected={field.value}
                           onSelect={field.onChange}
