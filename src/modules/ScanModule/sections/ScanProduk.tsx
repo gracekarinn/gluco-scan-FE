@@ -77,9 +77,6 @@ const ScanProduk = () => {
           scanDelay={2000}
         />
       </div>
-      <Button variant="ghost" className="p-4 mt-4 w-full justify-center">
-        Use AI
-      </Button>
       <div className="flex gap-2 mt-4">
         <Button className="w-full">
           <Image src="/images-fill.png" alt="image" width={24} height={24} />
