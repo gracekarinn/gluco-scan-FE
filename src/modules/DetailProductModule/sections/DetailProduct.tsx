@@ -88,7 +88,8 @@ export const DetailProduct: React.FC<ProductDetailProps> = ({
           image,
           takaran:
             (
-              (servingSize.split(" ")[0] as unknown as number) * (data.sajian as unknown as number)
+              (servingSize.split(" ")[0] as unknown as number) *
+              (data.sajian as unknown as number)
             ).toString() +
             " " +
             servingSize.split(" ")[1],
@@ -301,11 +302,9 @@ export const DetailProduct: React.FC<ProductDetailProps> = ({
           </DialogContent>
         </Dialog>
         <div className="flex items-center justify-start gap-4 my-4">
-          <Link href="/produk/scan">
-            <ChevronLeft size={24} className="cursor-pointer" />
-          </Link>
+          <ChevronLeft onClick={() => setPage(1)} size={24} className="cursor-pointer" />
           <h1 className="text-M2 font-medium lg:ml-[250px] ml-[67px] text-[#101623]">
-            Scan Product
+            Tambah Asupan
           </h1>
         </div>
         <div className="relative max-[340px]:w-[158px] w-[188px] mx-auto max-[340px]:h-[150px] h-[188px] mb-3">
