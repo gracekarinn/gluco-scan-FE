@@ -11,8 +11,8 @@ export const Takaran = ({
   kadarGula: number;
 }) => {
 
-  const x = servingSize / (5 / kadarGula * servingSize);
-  const y = servingSize / (10 / kadarGula * servingSize);
+  const x = (5 / kadarGula * servingSize) / servingSize;
+  const y = (10 / kadarGula * servingSize) / servingSize;
   return (
     <div
       className={cn(
@@ -26,7 +26,7 @@ export const Takaran = ({
         </p>
         <hr className="border-neutral-200" />
         <p className="text-M3 text-[#101623] font-medium text-center p-2">
-        {`< ${y.toFixed(1)}`}
+        {`< ${x.toFixed(2)}`}
         </p>
       </div>
       <div className="border border-neutral-200 rounded-[4px]">
@@ -35,7 +35,7 @@ export const Takaran = ({
         </p>
         <hr className="border-neutral-200" />
         <p className="text-M3 text-[#101623] font-medium text-center p-2">
-        {`${y.toFixed(1)} - ${x.toFixed(1)}`}
+        {`${x.toFixed(2)} - ${y.toFixed(2)}`}
         </p>
       </div>
       <div className="border max-[360px]:col-span-2 border-neutral-200 rounded-[4px]">
@@ -44,7 +44,7 @@ export const Takaran = ({
         </p>
         <hr className="border-neutral-200" />
         <p className="text-M3 text-[#101623] font-medium text-center p-2">
-        {`> ${x.toFixed(1)}`}
+        {`> ${y.toFixed(2)}`}
         </p>
       </div>
     </div>
