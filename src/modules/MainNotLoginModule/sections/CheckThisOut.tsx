@@ -1,5 +1,4 @@
 import React from "react";
-import { PlayCircleIcon } from "@heroicons/react/16/solid";
 
 const CheckThisOut = () => {
   return (
