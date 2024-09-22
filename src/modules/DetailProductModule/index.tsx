@@ -1,5 +1,4 @@
 "use client";
-import { ChevronLeft } from "lucide-react";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { DetailProduct } from "./sections/DetailProduct";
@@ -37,13 +36,23 @@ export const DetailProductModule = ({ id }: { id: string }) => {
       setData({
         productId: response.code,
         namaProduk: response.product.product_name,
-        kadarGula: response.product.nutriments.sugars,
+        kadarGula: response.product.nutriments.sugars_serving,
         image: response.product.image_url,
+        servingSize:
+          response.product.serving_quantity +
+          " " +
+          (response.product.serving_quantity_unit === undefined
+            ? "g"
+            : response.product.serving_quantity_unit === "g"
+            ? "gram"
+            : response.product.serving_quantity_unit),
         takaran:
           response.product.product_quantity +
           " " +
           (response.product.product_quantity_unit === undefined
             ? "g"
+            : response.product.product_quantity_unit === "g"
+            ? "gram"
             : response.product.product_quantity_unit),
         energyKcal: response.product.nutriments.energy_value,
         proteins: response.product.nutriments.proteins,
@@ -83,14 +92,6 @@ export const DetailProductModule = ({ id }: { id: string }) => {
       </Dialog>
       {!dialog && !isLoading && (
         <>
-          <div className="flex items-center justify-start gap-4 my-4">
-            <Link href="/produk/scan">
-              <ChevronLeft size={24} className="cursor-pointer" />
-            </Link>
-            <h1 className="text-M2 font-medium lg:ml-[250px] ml-[67px] text-[#101623]">
-              Scan Product
-            </h1>
-          </div>
           <DetailProduct {...data} />
         </>
       )}
