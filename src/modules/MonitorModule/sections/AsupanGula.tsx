@@ -102,7 +102,7 @@ export const AsupanGula = () => {
                 key={item.id}
                 name={item.namaProduct}
                 image={item.image}
-                gula={item.kadarGula}
+                gula={(item.kadarGula).toFixed(1) as unknown as number}
                 weight={item.takaran}
               />
             ))}

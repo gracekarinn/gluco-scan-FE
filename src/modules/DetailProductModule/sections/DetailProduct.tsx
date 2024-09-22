@@ -84,7 +84,7 @@ export const DetailProduct: React.FC<ProductDetailProps> = ({
         body: JSON.stringify({
           productId,
           namaProduct: namaProduk,
-          kadarGula: kadarGula * (data.sajian as unknown as number),
+          kadarGula: (parseFloat(kadarGula.toFixed(1))) * (data.sajian as unknown as number),
           image,
           takaran:
             (
@@ -154,7 +154,7 @@ export const DetailProduct: React.FC<ProductDetailProps> = ({
                 }
               )}
             >
-              {kadarGula}g
+              {kadarGula.toFixed(1)}g
             </p>
           </div>
         </div>
@@ -174,7 +174,7 @@ export const DetailProduct: React.FC<ProductDetailProps> = ({
             </div>
             <hr className="border-neutral-200" />
             <p className="text-M2 text-[#101623] font-medium text-center p-2">
-              {energyKcal}
+              {energyKcal.toFixed(1)}
             </p>
           </div>
           <div className="border border-neutral-200 rounded-[4px]">
@@ -189,7 +189,7 @@ export const DetailProduct: React.FC<ProductDetailProps> = ({
             </div>
             <hr className="border-neutral-200" />
             <p className="text-M2 text-[#101623] font-medium text-center p-2">
-              {proteins}
+              {proteins.toFixed(1)}
             </p>
           </div>
           <div className="border border-neutral-200 rounded-[4px]">
@@ -204,7 +204,7 @@ export const DetailProduct: React.FC<ProductDetailProps> = ({
             </div>
             <hr className="border-neutral-200" />
             <p className="text-M2 text-[#101623] font-medium text-center p-2">
-              {fats}
+              {fats.toFixed(1)}
             </p>
           </div>
           <div className="border border-neutral-200 rounded-[4px]">
@@ -219,7 +219,7 @@ export const DetailProduct: React.FC<ProductDetailProps> = ({
             </div>
             <hr className="border-neutral-200" />
             <p className="text-M2 text-[#101623] font-medium text-center p-2">
-              {carbohydrates}
+              {carbohydrates.toFixed(1)}
             </p>
           </div>
         </div>

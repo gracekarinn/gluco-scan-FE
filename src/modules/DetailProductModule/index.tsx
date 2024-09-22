@@ -36,10 +36,12 @@ export const DetailProductModule = ({ id }: { id: string }) => {
       setData({
         productId: response.code,
         namaProduk: response.product.product_name,
-        kadarGula: response.product.nutriments.sugars_serving,
+        kadarGula: response.product.nutriments.sugars_serving === undefined ? response.product.nutriments.sugars : response.product.nutriments.sugars_serving,
         image: response.product.image_url,
         servingSize:
-          response.product.serving_quantity +
+          (response.product.serving_quantity === undefined
+            ? response.product.product_quantity
+            : response.product.serving_quantity) +
           " " +
           (response.product.serving_quantity_unit === undefined
             ? "g"
@@ -55,8 +57,8 @@ export const DetailProductModule = ({ id }: { id: string }) => {
             ? "gram"
             : response.product.product_quantity_unit),
         energyKcal: response.product.nutriments.energy_value,
-        proteins: response.product.nutriments.proteins,
-        fats: response.product.nutriments.fat,
+        proteins: response.product.nutriments.proteins === undefined ? 0 : response.product.nutriments.proteins,
+        fats: response.product.nutriments.fat === undefined ? 0 : response.product.nutriments.fat,
         carbohydrates: response.product.nutriments.carbohydrates,
       });
       setIsLoading(false);
