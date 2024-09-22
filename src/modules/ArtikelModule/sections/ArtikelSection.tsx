@@ -8,7 +8,7 @@ const ArtikelSection = () => {
     <section className="pb-4">
       <div className="flex mx-4 mt-3 gap-4  items-center">
         <Link
-          href="/main"
+          href="/"
           className="text-gray-600 hover:text-gray-800 transition-colors"
         >
           <ArrowLeftIcon className="w-5 h-5" />
